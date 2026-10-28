@@ -206,3 +206,27 @@ export const POINT_AREA: Record<string, string> = { F3:'foot',R3:'foot',R6:'foot
  VC6:'abdomen',VC4:'abdomen',VC8:'abdomen',VC3:'abdomen',VC9:'abdomen',V23:'lowerback',VG4:'lowerback',V17:'upperback',VG14:'upperback',
  C6:'arm',P5:'arm',GI11:'arm',MC8:'arm' };
 export const AREA_LABEL: Record<string, string> = { foot:'стопа', leg:'нога', abdomen:'живот', lowerback:'поясница, вид сзади', upperback:'спина, вид сзади', arm:'рука' };
+
+export const POINT_IMG: Record<string, string> = { P5:'chi_ze', VG14:'da_zhui', V17:'da_zhui_ge_shu', VB20:'feng_chi', VG16:'feng_fu', E40:'feng_long', V12:'feng_men', R7:'fu_liu', V43:'gao_huang', VC4:'guan_yuan', VG20:'bai_hui', V23:'shen_shu', VC9:'shui_fen', F3:'tai_chong', R3:'tai_xi', E25:'tian_shu', TR5:'wai_guan', V39:'wei_yang_zhong', V40:'wei_zhong', V26:'guan_yuan_shu', MC8:'lao_gong', P7:'lie_que', VG4:'ming_men', GI6:'pian_li', VB27:'point_ushu', VC6:'qi_hai', R13:'qi_hai_bilateral', V24:'qi_hai_shu', GI11:'qu_chi', R2:'ran_gu', C7:'shen_men', VC8:'shen_que', RP9:'yin_ling_quan', C6:'yin_xi', R6:'zhao_hai', VC3:'zhong_ji', VC12:'zhong_wan', E36:'zu_san_li', VB39:'xuan_zhong', RP10:'xue_hai', VG3:'yao_yang_guan' };
+
+export const TYPE_CHART: Record<number, string> = { 0:'g_norm', 1:'g_qi', 2:'g_yang_def', 3:'g_yin_def', 4:'g_blood', 5:'g_stag_qi', 6:'g_stag_blood', 7:'g_yang_ex', 8:'g_damp_c', 9:'g_damp_h' };
+export const TYPE_YY: Record<number, string> = { 0:'yy_norma', 1:'yy_empty_qi', 2:'yy_empty_yang', 3:'yy_empty_yin', 4:'yy_empty_blood', 5:'yy_stag_qi', 6:'yy_stag_blood', 7:'yy_excess_yang', 8:'yy_damp_cold', 9:'yy_damp_heat' };
+export const BLOCK_IMG: Record<number, { src: string; alt: string }> = {
+ 2:{ src:'energy_gauss', alt:'Схема энергозатрат организма: зоны оптимума, нормы и проблемы' },
+ 5:{ src:'diag_eyes_lips', alt:'Примеры: тёмные круги и пигментация у глаз, покраснение и сосуды на склерах, бледные, яркие и фиолетовые губы' },
+ 10:{ src:'pain_scale', alt:'Шкала оценки интенсивности боли от 0 до 10 с лицами' },
+ 4:{ src:'qi_cycle', alt:'Схема суточного цикла Ци: днём преобладает Ян, ночью Инь' },
+ 8:{ src:'fluids_flow', alt:'Схема превращения жидкостей организма: три обогревателя' },
+ 11:{ src:'leading_hand', alt:'Как определить ведущую руку: замок из рук и круг на бумаге' },
+};
+export const INFO_IMG: [string, string, string, string][] = [
+ ['about','Коротко о том','pavlov_tree','Типы темперамента по И. П. Павлову'],
+ ['glossary','Инь и Ян','qi_cycle','Схема суточного цикла Ци: день (Ян) и ночь (Инь)'],
+ ['glossary','Сырость, мокрота','fluids_flow','Схема превращения жидкостей организма: три обогревателя'],
+ ['glossary','Конституция и норма','energy_gauss','Схема энергозатрат: оптимум, норма, проблема'],
+ ['help','Интроверты','pavlov_tree','Типы темперамента по И. П. Павлову'],
+ ['help','Как отвечать на остальные','leading_hand','Как определить ведущую руку'],
+ ['help','Как отвечать на остальные','diag_eyes_lips','Примеры цвета губ, глаз и кожи вокруг глаз'],
+ ['help','Как отвечать на остальные','pain_scale','Шкала оценки интенсивности боли'],
+ ['glossary','Пустота, избыток','pain_scale','Шкала оценки интенсивности боли от 0 до 10'],
+];

@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
-import { BLOCKS, hintFor } from '@/lib/data';
+import { BLOCKS, hintFor, BLOCK_IMG } from '@/lib/data';
+import LoadingScreen from '@/components/LoadingScreen';
 import { C } from '@/lib/content';
 import { calculateResults } from '@/lib/scoring';
 import { supabaseBrowser } from '@/lib/supabase/client';
@@ -30,10 +31,12 @@ export default function Quiz() {
   }
   return (
     <div className="space-y-4 pb-24">
+      {state === 'saving' && <LoadingScreen overlay text={C.quiz.saving} />}
       <div><div className="flex justify-between text-sm font-medium"><span>{C.quiz.block(step + 1, total)}</span><span>{Math.round((step / total) * 100)}%</span></div>
         <div className="mt-1 h-2 rounded bg-slate-200"><div className="h-2 rounded bg-blue-700 transition-all" style={{ width: `${(step / total) * 100}%` }} /></div>
         <p className="mt-1 text-xs text-slate-500">{C.quiz.period}</p></div>
       <h1 className="text-2xl font-bold">{block.title}</h1><p className="text-sm text-slate-600">{block.hint}</p>
+      {BLOCK_IMG[block.id] && <details className="card"><summary className="cursor-pointer text-blue-700">{C.more.scheme}</summary><img src={`/schemes/${BLOCK_IMG[block.id].src}.png`} alt={BLOCK_IMG[block.id].alt} loading="lazy" className="mt-3 h-auto w-full rounded-xl" /></details>}
       {block.questions.map(([text], q) => { const k = key(block.id, q); return (
         <motion.div key={k} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="card space-y-3">
           <div className="flex items-start justify-between gap-2"><p>{text}</p>
