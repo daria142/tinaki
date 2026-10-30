@@ -20,3 +20,22 @@ body { background:linear-gradient(180deg,#e6f0ff 0%,#f4f8fb 320px); color:#0f172
 @keyframes lift{0%,54%,100%{transform:translateY(0) scale(1,1)}20%{transform:translateY(-1.65rem)}36%{transform:translateY(0) scale(1.08,.82)}44%{transform:translateY(-.18rem) scale(.96,1.06)}}
 @keyframes load{0%{opacity:.35;transform:scaleX(0)}10%{opacity:1}86%{opacity:1;transform:scaleX(1)}100%{opacity:0;transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.dot,.fill{animation:none}.fill{transform:scaleX(.6)}}
+
+/* ---- современный слой: анимации, градиенты, глубина (палитра прежняя) ---- */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(40rem 28rem at 8% -5%,rgba(105,165,254,.28),transparent 60%),radial-gradient(34rem 26rem at 100% 10%,rgba(14,165,233,.16),transparent 60%),radial-gradient(30rem 24rem at 50% 110%,rgba(37,99,235,.10),transparent 60%)}
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;box-shadow:0 1px 2px rgba(30,64,175,.05),0 8px 24px -14px rgba(30,64,175,.25)}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -14px rgba(30,64,175,.4)}
+.btn,.btn2{transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease,background-color .2s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(29,78,216,.7)}
+.btn:active,.btn2:active{transform:scale(.97)}
+.hero-anim{background-image:linear-gradient(120deg,#1d4ed8,#0ea5e9,#2563eb,#38bdf8);background-size:300% 300%;animation:gradient-move 14s ease infinite;border:none}
+@keyframes gradient-move{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fade-up{animation:fade-up .5s ease both}
+.page-in{animation:fade-up .4s ease both}
+details.card>summary{display:flex;align-items:center;justify-content:space-between;gap:.75rem;list-style:none}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::after{content:"›";font-size:1.5rem;line-height:1;color:#2563eb;transition:transform .25s ease}
+details[open].card>summary::after{transform:rotate(90deg)}
+details[open]>*:not(summary){animation:fade-up .35s ease both}
+@media (prefers-reduced-motion:reduce){.fade-up,.page-in,.hero-anim,details[open]>*:not(summary){animation:none}.card,.btn,.btn2{transition:none}}

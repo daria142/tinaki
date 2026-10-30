@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import { supabaseServer } from '@/lib/supabase/server';
-
-export async function POST() {
+export async function POST(req: NextRequest) {
   await supabaseServer().auth.signOut();
-  return new NextResponse(null, { status: 303, headers: { Location: '/login' } });
+  return NextResponse.redirect(new URL('/login', req.url), { status: 303 });
 }
