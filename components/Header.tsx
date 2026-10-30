@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { supabaseServer } from '@/lib/supabase/server';
 import { C } from '@/lib/content';
 export default async function Header() {
-  const { data: { user } } = await supabaseServer().auth.getUser();
-  if (!user) return null;
+  // getSession читает cookie без запроса к серверу: шапка не тормозит страницу (доступ защищает middleware)
+  const { data: { session } } = await supabaseServer().auth.getSession();
+  if (!session) return null;
   return (
     <header className="mx-auto flex max-w-3xl items-center justify-between p-4">
       <Link href="/dashboard" className="flex items-center gap-2 font-bold"><img src="/logo.png" alt="" className="h-8" />{C.brand}</Link>
