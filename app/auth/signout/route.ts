@@ -1,6 +1,7 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { supabaseServer } from '@/lib/supabase/server';
-export async function POST(req: NextRequest) {
+// Выход: завершаем сессию и уходим на страницу входа/регистрации (относительный адрес, без localhost).
+export async function POST() {
   await supabaseServer().auth.signOut();
-  return NextResponse.redirect(new URL('/login', req.url), { status: 303 });
+  return new NextResponse(null, { status: 303, headers: { Location: '/login' } });
 }

@@ -1,4 +1,5 @@
 'use client';
+import SafeImg from '@/components/SafeImg';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { HelpCircle } from 'lucide-react';
@@ -35,7 +36,7 @@ export default function Quiz() {
         <div className="mt-1 h-2 rounded bg-slate-200"><div className="h-2 rounded bg-gradient-to-r from-blue-700 to-sky-400 transition-all duration-500" style={{ width: `${(step / total) * 100}%` }} /></div>
         <p className="mt-1 text-xs text-slate-500">{C.quiz.period}</p></div>
       <h1 className="text-2xl font-bold">{block.title}</h1><p className="text-sm text-slate-600">{block.hint}</p>
-      {BLOCK_IMG[block.id] && <details className="card"><summary className="cursor-pointer text-blue-700">{C.more.scheme}</summary><img src={`/schemes/${BLOCK_IMG[block.id].src}.webp`} alt={BLOCK_IMG[block.id].alt} loading="lazy" className="mt-3 h-auto w-full rounded-xl" /></details>}
+      {BLOCK_IMG[block.id] && <details className="card"><summary className="cursor-pointer text-blue-700">{C.more.scheme}</summary><SafeImg src={`/schemes/${BLOCK_IMG[block.id].src}.png`} alt={BLOCK_IMG[block.id].alt} loading="lazy" className="mt-3 h-auto w-full rounded-xl" /></details>}
       {block.questions.map(([text], q) => { const k = key(block.id, q); return (
         <div key={k} className="card fade-up space-y-3" style={{ animationDelay: `${Math.min(q, 10) * 35}ms` }}>
           <div className="flex items-start justify-between gap-2"><p>{text}</p>
